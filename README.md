@@ -1,2 +1,2 @@
-# tools4uplift
+# tools4uplift R package
 Tools for Uplift Modeling
