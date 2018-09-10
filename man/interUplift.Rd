@@ -1,25 +1,31 @@
-\name{splitUplift}
-\alias{splitUplift}
+\name{interUplift}
+\alias{interUplift}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Split dataset with respect to Uplift distribution
+The interaction Uplift Model Estimator
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-splitUplift(data, p, group)
+interUplift(data, treat, outcome, predictors, input = "p")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-a data frame of interest that contains at least the response and the treatment variables.
+%%     ~~Describe \code{data} here~~
 }
-  \item{p}{
-The desired sample size. p is a value between 0 and 1 expressed as a decimal, it is set to be proportional to the number of observations per group.
+  \item{treat}{
+%%     ~~Describe \code{treat} here~~
 }
-  \item{group}{
-Your grouping variables. Generally, for uplift modelling, this should be a vector of treatment and response variables names.
+  \item{outcome}{
+%%     ~~Describe \code{outcome} here~~
+}
+  \item{predictors}{
+%%     ~~Describe \code{predictors} here~~
+}
+  \item{input}{
+%%     ~~Describe \code{input} here~~
 }
 }
 \details{
@@ -51,13 +57,8 @@ Your grouping variables. Generally, for uplift modelling, this should be a vecto
 library(tools4uplift)
 scene <- generateScene(plotit=FALSE)
 data <- generateUplift(scene, 1000, 10)
-
-split <- splitUplift(data, 0.8, c("treat", "y"))
-train <- split[[1]]
-valid <- split[[2]]
-
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
+\keyword{ ~kwd1 }
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

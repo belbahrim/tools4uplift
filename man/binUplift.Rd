@@ -35,7 +35,7 @@ a binary (numeric) vector representing the treatment assignment (coded as 0/1).
 a vector representing the explanatory variable to bin.
 }
   \item{n.split}{
-number of splits to test at each node. For continuous varX onlyt (must be > 0).
+number of splits to test at each node. For continuous varX only (must be > 0).
 }
   \item{alpha}{
 significance level of the statistical test (must be between 0 and 1).
@@ -82,11 +82,11 @@ Additional arguments passed to plot.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-library("tools4uplift")
-set.seed(12345)
-train <- simUplift(n=100, p=2, c0=1, c1=5, sigma0=0.1, sigma1=0.1)
+library(tools4uplift)
+scene <- generateScene(plotit=FALSE)
+train <- generateUplift(scene, 1000, 10)
 
-binX1 <- binUplift(df=train, response="y", group="treat", varX="X1", alpha=0.05, n.min=3, title="Binning for X1")
+binX1 <- binUplift(df=train, response="y", group="treat", varX="X1", alpha=0.10, n.min=3, title="Binning for X1")
 
 
 }

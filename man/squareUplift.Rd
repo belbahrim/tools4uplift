@@ -8,9 +8,7 @@ Non-parametric heat map for Uplift
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-squareUplift(train, valid, var1, var2, treat, outcome, step, 
-         n.min=1, 
-         plotit = TRUE, nbGroup = 10)
+squareUplift(train, valid, var1, var2, treat, outcome, step, n.min=1, plotit = TRUE, nbGroup = 10)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -71,10 +69,13 @@ number of groups of equal observations in which to partition the data set to cre
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-library("tools4uplift")
-set.seed(12345)
-train <- simUplift(n=100, p=2, c0=1, c1=5, sigma0=0.1, sigma1=0.1)
-valid <- simUplift(n=100, p=2, c0=1, c1=5, sigma0=0.1, sigma1=0.1)
+library(tools4uplift)
+scene <- generateScene(plotit=FALSE)
+data <- generateUplift(scene, 1000, 10)
+
+split <- splitUplift(data, 0.5, c("treat", "y"))
+train <- split[[1]]
+valid <- split[[2]]
 
 square <- squareUplift(train, valid, "X1", "X2", "treat", "y", step=0.3, nbGroup=5, plotit=TRUE)
 }

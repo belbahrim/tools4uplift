@@ -42,10 +42,13 @@ a table that must be the output of qiniTable function.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-library("tools4uplift")
-set.seed(12345)
-train <- simUplift(n=100, p=2, c0=1, c1=5, sigma0=0.1, sigma1=0.1)
-valid <- simUplift(n=100, p=2, c0=1, c1=5, sigma0=0.1, sigma1=0.1)
+library(tools4uplift)
+scene <- generateScene(plotit=FALSE)
+data <- generateUplift(scene, 1000, 10)
+
+split <- splitUplift(data, 0.5, c("treat", "y"))
+train <- split[[1]]
+valid <- split[[2]]
 
 square <- squareUplift(train, valid, "X1", "X2", "treat", "y", step=0.3, nbGroup=5, plotit=FALSE)
 

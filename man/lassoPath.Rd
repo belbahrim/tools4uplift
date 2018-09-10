@@ -48,24 +48,7 @@ lassoPath(data, formula, nb_lambda = 100)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (data, formula, nb_lambda = 100) 
-{
-    require(glmnet)
-    X <- model.matrix(formula, data)
-    y <- model.frame(formula, data)[, 1]
-    glmnet.output <- glmnet(X, y, alpha = 1, family = "binomial", 
-        nlambda = nb_lambda, intercept = FALSE)
-    dimension <- glmnet.output$df
-    coeff <- t(as.matrix(glmnet.output$beta))
-    lambda <- glmnet.output$lambda
-    path <- cbind(lambda, dimension, coeff)
-    return(path)
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

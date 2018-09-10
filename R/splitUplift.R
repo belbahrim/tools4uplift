@@ -1,8 +1,4 @@
-splitUplift <-
-function(data, p, group){
-  
-  require(fifer, quietly = TRUE)
-  require(dplyr, quietly = TRUE)
+splitUplift <- function(data, p, group){
   
   data$ID = seq(1:nrow(data))
   

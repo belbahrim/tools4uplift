@@ -2,11 +2,7 @@ squareUplift <-
 function(train, valid, var1, var2, treat, outcome, step, 
          n.min=1, 
          plotit = TRUE, nbGroup = 10){
-  
-  require(ggplot2)
-  require(gridExtra)
-  
-  
+
   #Initalize grid of uplifts for training set
   seq_col = seq(floor(min(train[,paste(var1)])),ceiling(max(train[,paste(var1)])),step)
   seq_row = seq(floor(min(train[,paste(var2)])),ceiling(max(train[,paste(var2)])),step)

@@ -1,6 +1,4 @@
 lassoPath <- function(data, formula, nb_lambda=100){
-  
-  require(glmnet)
 
   X <- model.matrix(formula, data)
   y <- model.frame(formula,data)[,1]

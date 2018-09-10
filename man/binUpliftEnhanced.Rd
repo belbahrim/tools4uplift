@@ -32,7 +32,7 @@ a binary response (numeric) vector (coded as 0/1).
 a binary (numeric) vector representing the treatment assignment (coded as 0/1).
 }
   \item{n.split}{
-number of splits to test at each node. For continuous varX onlyt (must be > 0).
+number of splits to test at each node. For continuous varX only (must be > 0).
 }
   \item{alpha}{
 significance level of the statistical test (must be between 0 and 1).
