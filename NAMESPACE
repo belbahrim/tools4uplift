@@ -1,5 +1,4 @@
 import(dplyr,
-       fifer,
        ggplot2,
        glmnet,
        gridExtra)

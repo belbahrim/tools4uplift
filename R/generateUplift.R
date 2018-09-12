@@ -32,7 +32,7 @@ generateUplift <- function(object, nbobs, dimension){
     treat[i] = 1
   }
   
-  Sim_Data <- cbind(y,treat,Data,pt,pc)
+  Sim_Data <- cbind(y,treat,Data)
   
   return(Sim_Data)
   

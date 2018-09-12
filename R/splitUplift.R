@@ -2,9 +2,10 @@ splitUplift <- function(data, p, group){
   
   data$ID = seq(1:nrow(data))
   
-  train <- stratified(df = data, group=paste(group) , size = p)
+  train <- data %>% group_by(paste(group, collapse = ',')) %>%  sample_frac(p)
+  train <- as.data.frame(train[,-ncol(train)])
   valid <- data %>% anti_join(train, by = "ID")
   
-  dataSplit <- list(train[,-ncol(data)], valid[,-ncol(data)])
+  dataSplit <- list(train[,-ncol(train)], valid[,-ncol(valid)])
   return(dataSplit)
 }

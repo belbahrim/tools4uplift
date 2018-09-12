@@ -2,10 +2,10 @@
 \alias{bestFeatures}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Feature Selection for Uplift Penalized Logistic Regression
+Feature Selection for the Interaction Uplift Model Estimator
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Penalized logistic regression in order to select the features that maximize the Qini coefficient. 
 }
 \usage{
 bestFeatures(data, outcome, treat, predictors, nb_lambda=100, nb_group=10, value=FALSE)
@@ -13,25 +13,25 @@ bestFeatures(data, outcome, treat, predictors, nb_lambda=100, nb_group=10, value
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-%%     ~~Describe \code{training} here~~
+a data frame containing the response, the treatment and the predictors.
 }
   \item{outcome}{
-%%     ~~Describe \code{formula} here~~
+name of a binary response (numeric) vector (coded as 0/1).
 }
   \item{treat}{
-%%     ~~Describe \code{treat} here~~
+name of a binary (numeric) vector representing the treatment assignment (coded as 0/1).
 }
   \item{predictors}{
-%%     ~~Describe \code{treat} here~~
+a vector of names representing the predictors to consider in the model.
 }
   \item{nb_lambda}{
-%%     ~~Describe \code{nb_lambda} here~~
+the number of lambda values - Default is 100.
 }
   \item{nb_group}{
-%%     ~~Describe \code{nb_group} here~~
+the number of groups for computing the Qini coefficient - Default is 10.
 }
   \item{value}{
-%%     ~~Describe \code{value} here~~
+if TRUE, the values of the best lambda and qini coefficient will be printed - Default is FALSE.
 }
 }
 \details{
@@ -64,7 +64,7 @@ library(tools4uplift)
 scene <- generateScene(plotit=FALSE)
 data <- generateUplift(scene, 1000, 10)
 
-features <- bestFeatures(data, "y", "treat", colnames(data[,3:12]) nb_lambda = 100, nb_group = 10, value = FALSE)
+features <- bestFeatures(data, "y", "treat", colnames(data[,3:12]), nb_lambda = 100, nb_group = 10, value = FALSE)
 
 
 }

@@ -8,10 +8,10 @@ Scenarios for Personalized Treatment Effects
 Creation of scenarios for treatment effect heterogeneity estimation
 }
 \usage{
-generateScene(space_dimension = 5, 
+generateScene(space_dimension = 2, 
               Principal_effect = c(0.1, 1), 
               Principal_std = c(1, 4), 
-              Control_effect_positive = c(0.26, 0.3), 
+              Control_effect_positive = c(0.2, 0.3), 
               Control_std_positive = c(1.5, 2), 
               Control_effect_negative = c(0.3, 0.4), 
               Control_std_negative = c(1.5, 2), 

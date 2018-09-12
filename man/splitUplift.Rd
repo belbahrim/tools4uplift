@@ -19,7 +19,7 @@ a data frame of interest that contains at least the response and the treatment v
 The desired sample size. p is a value between 0 and 1 expressed as a decimal, it is set to be proportional to the number of observations per group.
 }
   \item{group}{
-Your grouping variables. Generally, for uplift modelling, this should be a vector of treatment and response variables names.
+Your grouping variables. Generally, for uplift modelling, this should be a vector of treatment and response variables names, e.g. c("treat", "y").
 }
 }
 \details{

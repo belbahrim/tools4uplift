@@ -1,7 +1,7 @@
-generateScene <- function(space_dimension=5,
+generateScene <- function(space_dimension=2,
                         Principal_effect=c(0.1,1),
                         Principal_std=c(1,4),
-                        Control_effect_positive=c(0.26,0.3),
+                        Control_effect_positive=c(0.2,0.3),
                         Control_std_positive=c(1.5,2),
                         Control_effect_negative=c(0.3,0.4),
                         Control_std_negative=c(1.5,2),
@@ -104,7 +104,7 @@ generateScene <- function(space_dimension=5,
     
     resultv <- resultc - resultp
     
-    plot(a,resultc, col="red", type="l",xlab="x",ylab="y",ylim=c(-1,1))
+    plot(a,resultc, col="red", type="l",xlab="dimension 1",ylab="distribution",ylim=c(-1,1))
     lines(a,resultp, col="blue")
     lines(a,resultv, col="green")
     legend(-1.5,-0.2,legend=c("Treatment Propensity","Control Propensity", "Uplift"),pch = "-",col=c("blue","red","green"))
@@ -118,7 +118,7 @@ generateScene <- function(space_dimension=5,
     
     resultv <- resultc - resultp
     
-    plot(a,resultc, col="red", type="l",xlab="x",ylab="y",ylim=c(-1,1))
+    plot(a,resultc, col="red", type="l",xlab="dimension 2",ylab="distribution",ylim=c(-1,1))
     lines(a,resultp, col="blue")
     lines(a,resultv, col="green")
     legend(-1.5,-0.2,legend=c("Treatment Propensity","Control Propensity", "Uplift"),pch = "-",col=c("blue","red","green"))
