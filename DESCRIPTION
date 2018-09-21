@@ -2,9 +2,9 @@ Package: tools4uplift
 Version: 0.1-0
 Date: 2018-08-31
 Title: Tools for Uplift Modeling
-Author: Mouloud Belbahri, Olivier Gandouet
+Author: Mouloud Belbahri, Olivier Gandouet, Alejandro Murua, Vahid Partovi Nia
 Maintainer: Mouloud Belbahri <mouloud.belbahri@gmail.com>
-Description: This package integrates some tools for exploring and modeling uplift. The content can be separated into the following steps of statistical modeling: categorization, visualization, feature engineering, feature selection and model validation.
+Description: In order to simplify the task for praticioners in uplift modeling, we propose some tools that can be separated into the following steps of statistical modeling: categorization, visualization, feature engineering, feature selection and model validation.
 Depends: R (>= 3.1.2)
-Imports: dplyr, ggplot2, glmnet, gridExtra
+Imports: dplyr, glmnet
 License: GPL-2 | GPL-3

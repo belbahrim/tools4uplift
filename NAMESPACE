@@ -1,21 +1,23 @@
-import(dplyr,
-       ggplot2,
-       glmnet,
-       gridExtra)
+importFrom("grDevices", "heat.colors", "rgb")
+importFrom("graphics", "abline", "barplot", "image", "legend", "lines", "plot", "title")
+importFrom("stats", "as.formula", "binomial", "complete.cases", "glm", "model.frame", "model.matrix", "predict", "qnorm", "rbinom", "runif")
 
-export(bestFeatures,
-       binUplift,
-       binUpliftEnhanced,
-       dualPredict,
-       dualUplift,
-       generateScene,
-       generateUplift,
-       interPredict,
-       interUplift,
-       lassoPath,
-       qiniArea,
-       qiniBarPlot,
-       qiniCurve,
-       qiniTable,
-       splitUplift,
-       squareUplift)
+import(dplyr,
+       glmnet)
+
+export(BestFeatures,
+       BinUplift,
+       BinUpliftEnhanced,
+       DualPredict,
+       DualUplift,
+       GenerateScene,
+       GenerateUplift,
+       InterPredict,
+       InterUplift,
+       LassoPath,
+       QiniArea,
+       QiniBarPlot,
+       QiniCurve,
+       QiniTable,
+       SplitUplift,
+       SquareUplift)
