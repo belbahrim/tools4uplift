@@ -1,5 +1,5 @@
-\name{interPredict}
-\alias{interPredict}
+\name{InterPredict}
+\alias{InterPredict}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Predictions from the interaction Uplift Model Estimator
@@ -8,7 +8,7 @@ Predictions from the interaction Uplift Model Estimator
 Predictions from the interaction uplift model estimator with associated model performance.
 }
 \usage{
-interPredict(data, treat, outcome, model, nb_group = 10, plotit = FALSE)
+InterPredict(data, treat, outcome, model, nb.group = 10, plotit = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -24,7 +24,7 @@ interPredict(data, treat, outcome, model, nb_group = 10, plotit = FALSE)
   \item{model}{
 %%     ~~Describe \code{model} here~~
 }
-  \item{nb_group}{
+  \item{nb.group}{
 %%     ~~Describe \code{nb_group} here~~
 }
   \item{plotit}{
@@ -57,9 +57,11 @@ interPredict(data, treat, outcome, model, nb_group = 10, plotit = FALSE)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+
 library(tools4uplift)
-scene <- generateScene(plotit=FALSE)
-data <- generateUplift(scene, 1000, 10)
+scene <- GenerateScene(plotit = FALSE)
+train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

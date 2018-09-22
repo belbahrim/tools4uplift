@@ -1,5 +1,5 @@
-\name{qiniBarPlot}
-\alias{qiniBarPlot}
+\name{QiniBarPlot}
+\alias{QiniBarPlot}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Plots the Uplift barplot
@@ -8,15 +8,18 @@ Plots the Uplift barplot
 Barplot of observed uplift with respect to predicted uplift sorted from the highest to the lowest.
 }
 \usage{
-qiniBarPlot(x, title = "Model Performance: Uplift by Group")
+QiniBarPlot(x, title = "Model Performance: Uplift by Group", color = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-a table that must be the output of qiniTable function.
+a table that must be the output of \code{QiniTable} function.
 }
   \item{title}{
 an overall title for the plot.
+}
+  \item{color}{
+color of the curve.
 }
 }
 \details{
@@ -33,34 +36,30 @@ an overall title for the plot.
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Mouloud Belbahri
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-library(tools4uplift)
-scene <- generateScene(plotit=FALSE)
-data <- generateUplift(scene, 1000, 10)
 
-split <- splitUplift(data, 0.5, c("treat", "y"))
+library(tools4uplift)
+scene <- GenerateScene(plotit = FALSE)
+train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+
+split <- SplitUplift(train, 0.5, c("treat", "y"))
 train <- split[[1]]
 valid <- split[[2]]
 
-square <- squareUplift(train, valid, "X1", "X2", "treat", "y", 
-                      step=0.3, nbGroup=5, plotit=FALSE)
+square <- SquareUplift(train, valid, "X1", "X2", "treat", "y", 
+                      step = 0.3, nb.group = 5, plotit = FALSE)
 
 #performance of the heat map uplift estimation on the training dataset
-perf <- qiniTable(data=square[[1]], nbGroup=4, treatment="treat", 
-                  outcome="y", prediction="uplift")
+perf <- QiniTable(data = square[[1]], treat = "treat", 
+                  outcome = "y", prediction = "uplift", nb.group = 5)
 
-qiniBarPlot(perf)
+QiniBarPlot(perf)
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,4 +1,4 @@
-interUplift <- function(data, treat, outcome, predictors, input="p"){
+InterUplift <- function(data, treat, outcome, predictors, input=c("p", "bf")){
 
     #The parameter input controls if we want to use the predictors ("p") or the output of
     #bestFeatures function as predictors ("bf")

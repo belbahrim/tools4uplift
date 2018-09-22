@@ -16,7 +16,7 @@ The DESCRIPTION file:
 
 }
 \author{
-Mouloud Belbahri <mouloud.belbahri@gmail.com>,  Olivier Gandouet <olivier.gandouet@tdassurance.com>
+Mouloud Belbahri <mouloud.belbahri@gmail.com>,  Olivier Gandouet, Alejandro Murua, Vahid Partovi Nia
 }
 \references{
 

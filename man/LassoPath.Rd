@@ -1,5 +1,5 @@
-\name{lassoPath}
-\alias{lassoPath}
+\name{LassoPath}
+\alias{LassoPath}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Least Absolute Shrinkage and Selection Operator Path
@@ -8,7 +8,7 @@ Least Absolute Shrinkage and Selection Operator Path
 Fit an interaction uplift model via penalized maximum likelihood. The regularization path is computed for the lasso penalty at a grid of values for the regularization parameter lambda.
 }
 \usage{
-lassoPath(data, formula, nb_lambda = 100)
+LassoPath(data, formula, nb.lambda = 100)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,7 +18,7 @@ lassoPath(data, formula, nb_lambda = 100)
   \item{formula}{
 %%     ~~Describe \code{formula} here~~
 }
-  \item{nb_lambda}{
+  \item{nb.lambda}{
 %%     ~~Describe \code{nb_lambda} here~~
 }
 }

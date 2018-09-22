@@ -7,7 +7,8 @@ Feature Selection for the Interaction Uplift Model Estimator
 Penalized logistic regression (LASSO) in order to select the features that maximize the Qini coefficient. 
 }
 \usage{
-BestFeatures(data, treat, outcome, predictors, nb.lambda = 100, nb.group = 10, value = FALSE)
+BestFeatures(data, treat, outcome, predictors, nb.lambda = 100, nb.group = 10, 
+             value = FALSE)
 }
 \arguments{
   \item{data}{
@@ -51,7 +52,7 @@ scene <- GenerateScene(plotit = FALSE)
 train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
 
 features <- BestFeatures(data = train, treat = "treat", outcome = "y", 
-                         predictors = colnames(data[,3:12]))
+                         predictors = colnames(train[,3:12]))
 features
 
 }

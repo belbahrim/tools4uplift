@@ -1,5 +1,5 @@
-\name{generateScene}
-\alias{generateScene}
+\name{GenerateScene}
+\alias{GenerateScene}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Scenarios for Personalized Treatment Effects
@@ -8,7 +8,7 @@ Scenarios for Personalized Treatment Effects
 Creation of scenarios for treatment effect heterogeneity estimation.
 }
 \usage{
-generateScene(space_dimension = 2, 
+GenerateScene(space_dimension = 2, 
               Principal_effect = c(0.1, 1), 
               Principal_std = c(1, 4), 
               Control_effect_positive = c(0.2, 0.3), 
@@ -62,24 +62,15 @@ generateScene(space_dimension = 2,
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Olivier Gandouet
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-library(tools4uplift)
-#default
-scene <- generateScene()
 
-#do not output the functions plots
-scene <- generateScene(plotit=FALSE)
+library(tools4uplift)
+scene <- GenerateScene(plotit = FALSE)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

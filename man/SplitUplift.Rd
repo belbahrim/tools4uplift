@@ -1,5 +1,5 @@
-\name{splitUplift}
-\alias{splitUplift}
+\name{SplitUplift}
+\alias{SplitUplift}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Split dataset with respect to Uplift distribution
@@ -8,7 +8,7 @@ Split dataset with respect to Uplift distribution
 Split a dataset into training and validation subsets with respect to the uplift sample distribution.
 }
 \usage{
-splitUplift(data, p, group)
+SplitUplift(data, p, group)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -36,23 +36,18 @@ Your grouping variables. Generally, for uplift modelling, this should be a vecto
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Mouloud Belbahri
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-library(tools4uplift)
-scene <- generateScene(plotit=FALSE)
-data <- generateUplift(scene, 1000, 10)
 
-split <- splitUplift(data, 0.8, c("treat", "y"))
+library(tools4uplift)
+scene <- GenerateScene(plotit = FALSE)
+train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+
+split <- SplitUplift(train, 0.8, c("treat", "y"))
 train <- split[[1]]
 valid <- split[[2]]
 

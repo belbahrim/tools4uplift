@@ -1,5 +1,5 @@
-\name{interUplift}
-\alias{interUplift}
+\name{InterUplift}
+\alias{InterUplift}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 The interaction Uplift Model Estimator
@@ -8,7 +8,7 @@ The interaction Uplift Model Estimator
 Fit the interaction uplift model estimator.
 }
 \usage{
-interUplift(data, treat, outcome, predictors, input = "p")
+InterUplift(data, treat, outcome, predictors, input = c("p", "bf"))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -54,11 +54,13 @@ interUplift(data, treat, outcome, predictors, input = "p")
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-library(tools4uplift)
-scene <- generateScene(plotit=FALSE)
-data <- generateUplift(scene, 1000, 10)
 
-fit <- interUplift(data, "treat", "y", data[,3:12])
+library(tools4uplift)
+scene <- GenerateScene(plotit = FALSE)
+train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+
+fit <- InterUplift(train, "treat", "y", data[,3:12], "p")
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
