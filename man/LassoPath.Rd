@@ -1,56 +1,35 @@
 \name{LassoPath}
 \alias{LassoPath}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Least Absolute Shrinkage and Selection Operator Path
+LASSO path for the penalized logistic regression
 }
 \description{
-Fit an interaction uplift model via penalized maximum likelihood. The regularization path is computed for the lasso penalty at a grid of values for the regularization parameter lambda.
+Fit an interaction uplift model via penalized maximum likelihood. The regularization path is computed for the lasso penalty at a grid of values for the regularization constant.
 }
 \usage{
-LassoPath(data, formula, nb.lambda = 100)
+LassoPath(data, formula)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-%%     ~~Describe \code{data} here~~
+a data frame containing the treatment, the outcome and the predictors.
 }
   \item{formula}{
-%%     ~~Describe \code{formula} here~~
+an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted.
 }
-  \item{nb.lambda}{
-%%     ~~Describe \code{nb_lambda} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+a dataframe containing the coefficients values and the number of nonzeros coefficients for different values of lambda.
 }
 \references{
-%% ~put references to the literature/web site here ~
+Friedman, J., Hastie, T. and Tibshirani, R. (2010) Regularization Paths for Generalized Linear Models via Coordinate Descent, Journal of Statistical Software, Vol. 33(1), 1-22
 }
 \author{
-%%  ~~who you are~~
+Mouloud Belbahri
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{BestFeatures}, \code{glmnet}
 }
 \examples{
-
+#See glmnet() from library("glmnet") for more information
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{LASSO}

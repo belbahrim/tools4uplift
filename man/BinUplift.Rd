@@ -1,19 +1,17 @@
 \name{BinUplift}
 \alias{BinUplift}
 \title{
-Optimal Partitionning for Uplift Models
+Univariate quantization
 }
 \description{
-Univariate optimal partitionning for Uplift Models. The algorithm categorizes a single variable into bins with significantly different uplift values.
+Univariate optimal partitionning for Uplift Models. The algorithm quantizes a single variable into bins with significantly different observed uplift.
 }
 \usage{
-BinUplift(data, treat, outcome, x, n.split = 10, alpha = 0.05, 
-                       n.min = 30, ylim = NULL, ylab = "Uplift",
-                       title = "Binning Results", color = NULL)
+BinUplift(data, treat, outcome, x, n.split = 10, alpha = 0.05, n.min = 30)
 }
 \arguments{
   \item{data}{
-a data frame containing the treatment, the outcome and the predictor to categorize.
+a data frame containing the treatment, the outcome and the predictor to quantize.
 }
   \item{treat}{
 name of a binary (numeric) vector representing the treatment assignment (coded as 0/1).
@@ -22,10 +20,10 @@ name of a binary (numeric) vector representing the treatment assignment (coded a
 name of a binary response (numeric) vector (coded as 0/1).
 }
   \item{x}{
-name of the explanatory variable to categorize.
+name of the explanatory variable to quantize.
 }
   \item{n.split}{
-number of splits to test at each node. For continuous explanatory variables only (must be > 0).
+number of splits to test at each node. For continuous explanatory variables only (must be > 0). If n.split = 10, the test will be executed at each decile of the variable.
 }
   \item{alpha}{
 significance level of the statistical test (must be between 0 and 1).
@@ -33,50 +31,29 @@ significance level of the statistical test (must be between 0 and 1).
   \item{n.min}{
 minimum number of observations per child node.
 }
-  \item{ylim}{
-a range for the y axis.
-}
-  \item{ylab}{
-a title for the y axis.
-}
-  \item{title}{
-an overall title for the plot.
-}
-  \item{color}{
-a color for the plot. If ommitted, the color will be set by default to a custom light blue. 
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+
+\item{out.tree}{Descriptive statistics for the different nodes of the tree}
 }
 \references{
-%% ~put references to the literature/web site here ~
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2021) Uplift Regression : The R Package tools4uplift,
+<https://arxiv.org/pdf/1901.10867.pdf>
 }
 \author{
 Mouloud Belbahri
 }
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~ BinUpliftEnhanced
+\code{predict.BinUplift}
 }
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+data("SimUplift")
 
-binX1 <- BinUplift(data = train, treat = "treat", outcome = "y", x = "X1", 
-                  alpha = 0.10, n.min = 3, title = "Binning for X1")
-
+binX1 <- BinUplift(data = SimUplift, treat = "treat", outcome = "y", x = "X1", 
+                  n.split = 100, alpha = 0.01, n.min = 30)
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{tree}
+\keyword{quantization}

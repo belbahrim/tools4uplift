@@ -1,23 +1,53 @@
-importFrom("grDevices", "heat.colors", "rgb")
-importFrom("graphics", "abline", "barplot", "image", "legend", "lines", "plot", "title")
-importFrom("stats", "as.formula", "binomial", "complete.cases", "glm", "model.frame", "model.matrix", "predict", "qnorm", "rbinom", "runif")
+importFrom("grDevices", "colorRampPalette", "heat.colors", "rgb")
+importFrom("graphics", "abline", "barplot", "image", "legend", "lines", "par", "plot", "title")
+importFrom("stats", "as.formula", "binomial", "coef", "complete.cases", "cor", "glm", "model.frame", "model.matrix", "predict", "predict.glm", "qnorm", "quantile", "rbinom", "runif", "summary.glm")
 
-import(dplyr,
-       glmnet)
+import(BiasedUrn,
+       dplyr,
+       glmnet,
+       latticeExtra,
+       lhs)
 
 export(BestFeatures,
        BinUplift,
-       BinUpliftEnhanced,
-       DualPredict,
+       BinUplift2d,
        DualUplift,
-       GenerateScene,
-       GenerateUplift,
-       InterPredict,
        InterUplift,
        LassoPath,
+       PerformanceUplift,
+       barplot.PerformanceUplift,
+       plot.PerformanceUplift,
+       lines.PerformanceUplift,
+       predict.BinUplift,
+       predict.DualUplift,
+       predict.InterUplift,
        QiniArea,
-       QiniBarPlot,
-       QiniCurve,
-       QiniTable,
+       qLHS,
        SplitUplift,
-       SquareUplift)
+       UpliftPerCat)
+
+### Methods
+S3method(predict, BinUplift)
+
+S3method(print, DualUplift)
+S3method(summary, DualUplift)
+S3method(predict, DualUplift)
+S3method(DualUplift, formula)
+S3method(DualUplift, default)
+
+S3method(predict, InterUplift)
+S3method(InterUplift, formula)
+S3method(InterUplift, default)
+
+S3method(print, PerformanceUplift)
+S3method(print, qLHS)
+S3method(print, SplitUplift)
+
+S3method(barplot, PerformanceUplift)
+S3method(plot, PerformanceUplift)
+S3method(lines, PerformanceUplift)
+S3method(QiniArea, default)
+S3method(QiniArea, PerformanceUplift)
+
+
+

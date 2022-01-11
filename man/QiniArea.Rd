@@ -1,61 +1,57 @@
 \name{QiniArea}
 \alias{QiniArea}
-%- Also NEED an '\alias' for EACH other topic documented here.
+\alias{QiniArea.default}
+\alias{QiniArea.PerformanceUplift}
 \title{
-Computes the Qini coefficient
+Qini coefficient
 }
 \description{
-Compute the area under the Qini curve.
+Computes the area under the Qini curve.
 }
 \usage{
-QiniArea(x)
+\method{QiniArea}{PerformanceUplift}(x, adjusted=FALSE, ...)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-a table that must be the output of \code{QiniTable} function.
+a table that must be the output of \code{PerformanceUplift} function.
 }
+  \item{adjusted}{
+if TRUE, returns the Qini coefficient adjusted by the Kendall's uplift rank correlation.
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
+  \item{...}{Generic S3 Method argument.
+}
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+the Qini or the adjusted Qini coefficient
 }
 \references{
-%% ~put references to the literature/web site here ~
+Radcliffe, N. (2007). Using control groups to target on predicted lift: Building and assessing uplift models. Direct Marketing Analytics Journal, An Annual Publication from the Direct Marketing Association Analytics Council, pages 14-21.
+
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2020) Qini-based Uplift Regression, 
+<https://arxiv.org/pdf/1911.12474.pdf>
+
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2021) Uplift Regression : The R Package tools4uplift,
+<https://arxiv.org/pdf/1901.10867.pdf>
 }
 \author{
 Mouloud Belbahri
 }
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{PerformanceUplift}
 }
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+data("SimUplift")
 
-split <- SplitUplift(train, 0.5, c("treat", "y"))
-train <- split[[1]]
-valid <- split[[2]]
-
-square <- SquareUplift(train, valid, "X1", "X2", "treat", "y", 
-                      step = 0.3, nb.group = 5, plotit = FALSE)
+model <- BinUplift2d(SimUplift, "X1", "X2", "treat", "y")
 
 #performance of the heat map uplift estimation on the training dataset
-perf <- QiniTable(data = square[[1]], treat = "treat", 
-                  outcome = "y", prediction = "uplift", nb.group = 5)
-
+perf <- PerformanceUplift(data = model, treat = "treat", 
+                  outcome = "y", prediction = "Uplift_X1_X2", 
+                  equal.intervals = TRUE, nb.group = 5)
 QiniArea(perf)
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{Qini}
+\keyword{performance}

@@ -1,8 +1,7 @@
 \name{SplitUplift}
 \alias{SplitUplift}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Split dataset with respect to Uplift distribution
+Split data with respect to uplift distribution
 }
 \description{
 Split a dataset into training and validation subsets with respect to the uplift sample distribution.
@@ -10,7 +9,6 @@ Split a dataset into training and validation subsets with respect to the uplift 
 \usage{
 SplitUplift(data, p, group)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
 a data frame of interest that contains at least the response and the treatment variables.
@@ -22,37 +20,25 @@ The desired sample size. p is a value between 0 and 1 expressed as a decimal, it
 Your grouping variables. Generally, for uplift modelling, this should be a vector of treatment and response variables names, e.g. c("treat", "y").
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\item{train}{a training data frame of p percent}
+\item{valid}{a validation data frame of 1-p percent}
 }
 \references{
-%% ~put references to the literature/web site here ~
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2021) Uplift Regression : The R Package tools4uplift,
+<https://arxiv.org/pdf/1901.10867.pdf>
 }
 \author{
 Mouloud Belbahri
 }
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+data("SimUplift")
 
-split <- SplitUplift(train, 0.8, c("treat", "y"))
+split <- SplitUplift(SimUplift, 0.8, c("treat", "y"))
 train <- split[[1]]
 valid <- split[[2]]
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{sampling}

@@ -1,68 +1,56 @@
 \name{InterUplift}
 \alias{InterUplift}
-%- Also NEED an '\alias' for EACH other topic documented here.
+\alias{InterUplift.default}
+\alias{InterUplift.formula}
 \title{
-The interaction Uplift Model Estimator
+Interaction estimator
 }
 \description{
 Fit the interaction uplift model estimator.
 }
 \usage{
-InterUplift(data, treat, outcome, predictors, input = c("p", "bf"))
+
+\method{InterUplift}{formula}(formula, treat, data, ...)
+
+\method{InterUplift}{default}(data, treat, outcome, predictors, input = "all", ...)
+
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{data}{
-%%     ~~Describe \code{data} here~~
+  \item{data, formula}{a data frame containing the treatment, the outcome and the predictors or a formula describing the model to be fitted.
 }
   \item{treat}{
-%%     ~~Describe \code{treat} here~~
+name of a binary (numeric) vector representing the treatment assignment (coded as 0/1).
 }
   \item{outcome}{
-%%     ~~Describe \code{outcome} here~~
+name of a binary response (numeric) vector (coded as 0/1).
 }
   \item{predictors}{
-%%     ~~Describe \code{predictors} here~~
+a vector of names representing the explanatory variables to include in the model.
 }
   \item{input}{
-%%     ~~Describe \code{input} here~~
+an option for \code{predictors} argument. If \code{"all"} (default), the model assumes that the model has to create the interaction of all varibles with \code{treat}. If \code{"best"}, the model assumes that the \code{predictors} vector is the output of the \code{BestFeatures} function.
 }
+  \item{\dots}{additional arguments (other than \code{formula}, \code{family}, and \code{data}) to be passed to \code{glm} function for the interaction model.
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+an interaction model
 }
 \references{
-%% ~put references to the literature/web site here ~
+Lo, V., S., Y. (2002) The true lift model: a novel data mining approach to response modeling in database marketing. ACM SIGKDD Explorations Newsletter, Vol. 4(2), 78-86.
+
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2021) Uplift Regression : The R Package tools4uplift,
+<https://arxiv.org/pdf/1901.10867.pdf>
 }
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+Mouloud Belbahri
 }
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+data("SimUplift")
 
-fit <- InterUplift(train, "treat", "y", data[,3:12], "p")
+fit <- InterUplift(SimUplift, "treat", "y", colnames(SimUplift[, 3:12]))
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{uplift}

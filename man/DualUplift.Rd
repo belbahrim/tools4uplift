@@ -1,57 +1,60 @@
 \name{DualUplift}
 \alias{DualUplift}
-%- Also NEED an '\alias' for EACH other topic documented here.
+\alias{DualUplift.default}
+\alias{DualUplift.formula}
+\alias{print.DualUplift}
+\alias{summary.DualUplift}
 \title{
-The two-model Uplift Model Estimator
+Two-model estimator
 }
 \description{
 Fit the two-model uplift model estimator.
 }
 \usage{
-DualUplift(data, treat, outcome, predictors)
+
+\method{DualUplift}{formula}(formula, treat, data, ...)
+
+\method{DualUplift}{default}(data, treat, outcome, predictors, ...)
+
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{data}{
-%%     ~~Describe \code{data} here~~
+  \item{data, formula}{a data frame containing the treatment, the outcome and the predictors or a formula describing the model to be fitted.
 }
   \item{treat}{
-%%     ~~Describe \code{treat} here~~
+name of a binary (numeric) vector representing the treatment assignment (coded as 0/1).
 }
   \item{outcome}{
-%%     ~~Describe \code{outcome} here~~
+name of a binary response (numeric) vector (coded as 0/1).
 }
   \item{predictors}{
-%%     ~~Describe \code{predictors} here~~
+a vector of names representing the explanatory variables to include in the model.
 }
+  \item{\dots}{additional arguments (other than \code{formula}, \code{family}, and \code{data}) to be passed to \code{glm} function for each sub-model.
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+
+\item{model0}{Fitted model for control group}
+\item{model1}{Fitted model for treatment group}
+
 }
 \references{
-%% ~put references to the literature/web site here ~
+Hansotia, B., J., and Rukstales B. (2001) Direct marketing for multichannel retailers: Issues, challenges and solutions. Journal of Database Marketing and Customer Strategy Management, Vol. 9(3), 259-266.
+
+Belbahri, M., Murua, A., Gandouet, O., and Partovi Nia, V. (2021) Uplift Regression : The R Package tools4uplift,
+<https://arxiv.org/pdf/1901.10867.pdf>
 }
 \author{
 Mouloud Belbahri
 }
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 
 library(tools4uplift)
-scene <- GenerateScene(plotit = FALSE)
-train <- GenerateUplift(scene, nbobs = 1000, dimension = 10)
+data("SimUplift")
 
+fit <- DualUplift(SimUplift, "treat", "y", predictors = colnames(SimUplift[, 3:12]))
+
+print(fit)
+summary(fit)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{uplift}
